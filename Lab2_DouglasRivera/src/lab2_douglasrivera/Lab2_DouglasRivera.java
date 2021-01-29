@@ -36,7 +36,7 @@ public class Lab2_DouglasRivera {
             switch (Opcion) {
                 case 1:
                     System.out.println("Ingrese el nombre de la Franquicia");
-                    String NombreFranquicia= Leer.next();
+                    String NombreFranquicia = Leer.next();
                     System.out.println("Ingrese el nombre del Restaurante: ");
                     String Nombre = Leer.next();
                     System.out.println("Ingrese la ubicacion del Restaurante: ");
@@ -87,7 +87,7 @@ public class Lab2_DouglasRivera {
                     for (int i = 0; i < restaurantes.size(); i++) {
                         if (restaurantes.get(i).Nombre.equals(buscar)) {
                             System.out.println("Ingrese el nombre de la Franquicia");
-                            String Nombre_Franquicia= Leer.next();
+                            String Nombre_Franquicia = Leer.next();
                             System.out.println("Ingrese el nombre del Restaurante: ");
                             String Nombree = Leer.next();
                             System.out.println("Ingrese la ubicacion del Restaurante: ");
@@ -145,7 +145,7 @@ public class Lab2_DouglasRivera {
                 case 4:
                     System.out.println("Lista de Restaurantes");
                     for (int i = 0; i < restaurantes.size(); i++) {
-                       System.out.println("Nombre de la Franquicia: " + restaurantes.get(i).NombreFranquicia);
+                        System.out.println("Nombre de la Franquicia: " + restaurantes.get(i).NombreFranquicia);
                         System.out.println("Nombre del Restaurante: " + restaurantes.get(i).Nombre);
                         System.out.println("Ubicacion del restaurante: " + restaurantes.get(i).Ubicacion);
                         System.out.println("Cantidad de Empleados: " + restaurantes.get(i).Cantidad_Empleados);
@@ -153,7 +153,7 @@ public class Lab2_DouglasRivera {
                         System.out.println("Tiene Area de Juegos? : " + restaurantes.get(i).Area_Juegos);
                         System.out.println("Cantidad de mesas: " + restaurantes.get(i).Cantidad_Mesas);
                         System.out.println("Cantidad de Cajeros: " + restaurantes.get(i).Cantidad_Cajeros);
-                        System.out.println("Nombre del gerente: "+restaurantes.get(i).Nombre_Gerente);
+                        System.out.println("Nombre del gerente: " + restaurantes.get(i).Nombre_Gerente);
                         System.out.println("La especialidad del restaurante: " + restaurantes.get(i).Especialidad_Restaurante);
                         System.out.println("Estado de la casa: " + restaurantes.get(i).Estado_Restaurante);
                     }
@@ -187,28 +187,44 @@ public class Lab2_DouglasRivera {
                             int Estado_Restaurante = Leer.nextInt();
                             for (int i = 0; i < restaurantes.size(); i++) {
                                 if (Estado_Restaurante == restaurantes.get(i).getEstado_Restaurante()) {
-                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                    System.out.println("Nombre del restaurante: " + restaurantes.get(i).Nombre);
                                 } else if (Estado_Restaurante == restaurantes.get(i).getEstado_Restaurante()) {
-                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                    System.out.println("Nombre del restaurante: " + restaurantes.get(i).Nombre);
                                 } else {
-                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                    System.out.println("Nombre del restaurante: " + restaurantes.get(i).Nombre);
                                 }
                             }
                             break;
                         case 2:
-                             for (int i = 0; i < restaurantes.size(); i++) {
-                                if (restaurantes.get(i).EsPremiun){
-                                    System.out.println("Nombre del Restaurante: "+restaurantes.get(i).Nombre+"Ubicacion del restaurante: "+restaurantes.get(i).Ubicacion+"La especialidad del restaurante: "+restaurantes.get(i).Especialidad_Restaurante);
+                            for (int i = 0; i < restaurantes.size(); i++) {
+                                if (restaurantes.get(i).EsPremiun) {
+                                    System.out.println("Nombre del Restaurante: " + restaurantes.get(i).Nombre + "Ubicacion del restaurante: " + restaurantes.get(i).Ubicacion + "La especialidad del restaurante: " + restaurantes.get(i).Especialidad_Restaurante);
                                 }
-                             }
+                            }
 
                             break;
                         case 3:
-                            
-
+                            System.out.println("Ingrese el nombre de la Franquicia");
+                            NombreFranquicia = Leer.next();
+                            for (int i = 0; i < restaurantes.size(); i++) {
+                                if (restaurantes.get(i).NombreFranquicia.equals(NombreFranquicia)) {
+                                     System.out.println("Nombre del Restaurante: " + restaurantes.get(i).Nombre + "Ubicacion del restaurante: " + restaurantes.get(i).Ubicacion + "La especialidad del restaurante: " + restaurantes.get(i).Especialidad_Restaurante);
+                                }
+                            }
                             break;
                         case 4:
-
+                            int DobleGerente=0;
+                            for (int i = 0; i < restaurantes.size(); i++) {
+                                for (int j = 0; j < restaurantes.size(); j++) {
+                                    if(restaurantes.get(i).Nombre_Gerente.equals(restaurantes.get(j).Nombre_Gerente)){
+                                        DobleGerente ++;
+                                    }
+                                }
+                                if(DobleGerente == 2){
+                                    System.out.println("Nombre del Restaurante: " + restaurantes.get(i).Nombre + "Nombre del Gerente: "+restaurantes.get(i));
+                                }
+                                DobleGerente=0;
+                            }
                             break;
                     }
 
@@ -242,6 +258,7 @@ public class Lab2_DouglasRivera {
     }
 
     public static class Restaurantes {
+
         String NombreFranquicia;
         String Nombre;
         String Ubicacion;
@@ -259,7 +276,7 @@ public class Lab2_DouglasRivera {
         public Restaurantes() {
         }
 
-        public Restaurantes(String NombreFranquicia,String Nombre, String Ubicacion, int Cantidad_Empleados, boolean Parqueo, boolean Area_Juegos, int Cantidad_Mesas, int Cantidad_Cajeros, String Nombre_Gerente, String Especialidad_Restaurante, int Estado_Restaurante, int NumeroParqueos, boolean EsPremiun) {
+        public Restaurantes(String NombreFranquicia, String Nombre, String Ubicacion, int Cantidad_Empleados, boolean Parqueo, boolean Area_Juegos, int Cantidad_Mesas, int Cantidad_Cajeros, String Nombre_Gerente, String Especialidad_Restaurante, int Estado_Restaurante, int NumeroParqueos, boolean EsPremiun) {
             this.NombreFranquicia = NombreFranquicia;
             this.Nombre = Nombre;
             this.Ubicacion = Ubicacion;
