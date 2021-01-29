@@ -34,7 +34,9 @@ public class Lab2_DouglasRivera {
             System.out.print("Ingrese la opcion deseada: ");
             Opcion = Leer.nextInt();
             switch (Opcion) {
-                case 1: 
+                case 1:
+                    System.out.println("Ingrese el nombre de la Franquicia");
+                    String NombreFranquicia= Leer.next();
                     System.out.println("Ingrese el nombre del Restaurante: ");
                     String Nombre = Leer.next();
                     System.out.println("Ingrese la ubicacion del Restaurante: ");
@@ -44,7 +46,7 @@ public class Lab2_DouglasRivera {
                     System.out.println("Hay parqueo 1)[si] 0)[no]: ");
                     boolean Parqueo = Leer.nextInt() == 0 ? false : true;
                     int NumeroParqueos = 0;
-                    if(Parqueo){
+                    if (Parqueo) {
                         System.out.println("Numero maximo de vehiculos que soporta: ");
                         NumeroParqueos = Leer.nextInt();
                     }
@@ -56,9 +58,9 @@ public class Lab2_DouglasRivera {
                     int Cantidad_Cajeros = Leer.nextInt();
                     System.out.println("Ingrese el estado del Restaurante: \n1. Remodelacion\n2. Demolicion\n3. Funcional: ");
                     int EstadoRestaurante = Leer.nextInt();
-                    
-                    String Nombre_Gerente="";
-                    String Especialidad_Restaurante="";
+
+                    String Nombre_Gerente = "";
+                    String Especialidad_Restaurante = "";
                     switch (EstadoRestaurante) {
                         case 1:
                             System.out.println("El estado del Restaurante es que esta en Remodelacion");
@@ -73,8 +75,8 @@ public class Lab2_DouglasRivera {
                             System.out.println("Ingrese la especialidad del Restaurante: ");
                             Especialidad_Restaurante = Leer.next();
                             break;
-                    }                    
-                    restaurantes.add(new Restaurantes(Nombre, Ubicacion, Cantidad_Empleados, Parqueo, Area_Juegos, Cantidad_Mesas, Cantidad_Cajeros, Nombre_Gerente, Especialidad_Restaurante, EstadoRestaurante,NumeroParqueos,(NumeroParqueos>=30 && Area_Juegos)));
+                    }
+                    restaurantes.add(new Restaurantes(NombreFranquicia, Nombre, Ubicacion, Cantidad_Empleados, Parqueo, Area_Juegos, Cantidad_Mesas, Cantidad_Cajeros, Nombre_Gerente, Especialidad_Restaurante, EstadoRestaurante, NumeroParqueos, (NumeroParqueos >= 30 && Area_Juegos)));
                     System.out.println("Se agrego el Restaurante con exito");
                     break;
                 case 2:
@@ -84,6 +86,8 @@ public class Lab2_DouglasRivera {
                     buscar = Leer.next();
                     for (int i = 0; i < restaurantes.size(); i++) {
                         if (restaurantes.get(i).Nombre.equals(buscar)) {
+                            System.out.println("Ingrese el nombre de la Franquicia");
+                            String Nombre_Franquicia= Leer.next();
                             System.out.println("Ingrese el nombre del Restaurante: ");
                             String Nombree = Leer.next();
                             System.out.println("Ingrese la ubicacion del Restaurante: ");
@@ -102,6 +106,7 @@ public class Lab2_DouglasRivera {
                             String NombreGerente = Leer.next();
                             System.out.println("Ingrese la especialidad del Restaurante: ");
                             String EspecialidadRestaurante = Leer.next();
+                            restaurantes.get(i).NombreFranquicia = Nombre_Franquicia;
                             restaurantes.get(i).Nombre = Nombree;
                             restaurantes.get(i).Ubicacion = Ubicacionn;
                             restaurantes.get(i).Cantidad_Empleados = CantidadEmpleados;
@@ -140,14 +145,16 @@ public class Lab2_DouglasRivera {
                 case 4:
                     System.out.println("Lista de Restaurantes");
                     for (int i = 0; i < restaurantes.size(); i++) {
-                        System.out.println("Nombre del Retsaurante: " + restaurantes.get(i).Nombre);
+                       System.out.println("Nombre de la Franquicia: " + restaurantes.get(i).NombreFranquicia);
+                        System.out.println("Nombre del Restaurante: " + restaurantes.get(i).Nombre);
                         System.out.println("Ubicacion del restaurante: " + restaurantes.get(i).Ubicacion);
                         System.out.println("Cantidad de Empleados: " + restaurantes.get(i).Cantidad_Empleados);
                         System.out.println("Tiene parqueo? : " + restaurantes.get(i).Parqueo);
                         System.out.println("Tiene Area de Juegos? : " + restaurantes.get(i).Area_Juegos);
                         System.out.println("Cantidad de mesas: " + restaurantes.get(i).Cantidad_Mesas);
                         System.out.println("Cantidad de Cajeros: " + restaurantes.get(i).Cantidad_Cajeros);
-                        System.out.println("Nombre del gerente: " + restaurantes.get(i).Especialidad_Restaurante);
+                        System.out.println("Nombre del gerente: "+restaurantes.get(i).Nombre_Gerente);
+                        System.out.println("La especialidad del restaurante: " + restaurantes.get(i).Especialidad_Restaurante);
                         System.out.println("Estado de la casa: " + restaurantes.get(i).Estado_Restaurante);
                     }
                     break;
@@ -176,16 +183,32 @@ public class Lab2_DouglasRivera {
                     OpcionReportes = Leer.nextInt();
                     switch (OpcionReportes) {
                         case 1:
-                            
+                            System.out.println("Ingrese el estado del Restaurante: \n1. Remodelacion\n2. Demolicion\n3. Funcional: ");
+                            int Estado_Restaurante = Leer.nextInt();
+                            for (int i = 0; i < restaurantes.size(); i++) {
+                                if (Estado_Restaurante == restaurantes.get(i).getEstado_Restaurante()) {
+                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                } else if (Estado_Restaurante == restaurantes.get(i).getEstado_Restaurante()) {
+                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                } else {
+                                    System.out.println("Nombre del restaurante: "+restaurantes.get(i).Nombre);
+                                }
+                            }
                             break;
                         case 2:
-                            
+                             for (int i = 0; i < restaurantes.size(); i++) {
+                                if (restaurantes.get(i).EsPremiun){
+                                    System.out.println("Nombre del Restaurante: "+restaurantes.get(i).Nombre+"Ubicacion del restaurante: "+restaurantes.get(i).Ubicacion+"La especialidad del restaurante: "+restaurantes.get(i).Especialidad_Restaurante);
+                                }
+                             }
+
                             break;
                         case 3:
                             
+
                             break;
                         case 4:
-                            
+
                             break;
                     }
 
@@ -193,31 +216,33 @@ public class Lab2_DouglasRivera {
                 case 6:
                     System.out.println("Saliendo........");
             }
-        }     
+        }
     }
-    public static boolean ValidarUbicacion(ArrayList<Restaurantes> restaurantes, String Ubicacion){
+
+    public static boolean ValidarUbicacion(ArrayList<Restaurantes> restaurantes, String Ubicacion) {
         for (int i = 0; i < restaurantes.size(); i++) {
-          if(restaurantes.get(i).Ubicacion.equals(Ubicacion)){
-              return false;
-          }
+            if (restaurantes.get(i).Ubicacion.equals(Ubicacion)) {
+                return false;
+            }
         }
         return true;
     }
-    public static boolean ValidarGerente(ArrayList<Restaurantes> restaurantes, String Gerente){
-        int Apariciones=0;
+
+    public static boolean ValidarGerente(ArrayList<Restaurantes> restaurantes, String Gerente) {
+        int Apariciones = 0;
         for (int i = 0; i < restaurantes.size(); i++) {
-            if(restaurantes.get(i).Nombre_Gerente.equals(Gerente)){
-                Apariciones ++;
+            if (restaurantes.get(i).Nombre_Gerente.equals(Gerente)) {
+                Apariciones++;
             }
-         }
-        if(Apariciones>2){
+        }
+        if (Apariciones > 2) {
             return false;
         }
         return true;
     }
 
     public static class Restaurantes {
-
+        String NombreFranquicia;
         String Nombre;
         String Ubicacion;
         int Cantidad_Empleados;
@@ -234,7 +259,8 @@ public class Lab2_DouglasRivera {
         public Restaurantes() {
         }
 
-        public Restaurantes(String Nombre, String Ubicacion, int Cantidad_Empleados, boolean Parqueo, boolean Area_Juegos, int Cantidad_Mesas, int Cantidad_Cajeros, String Nombre_Gerente, String Especialidad_Restaurante, int Estado_Restaurante, int NumeroParqueos,boolean EsPremiun) {
+        public Restaurantes(String NombreFranquicia,String Nombre, String Ubicacion, int Cantidad_Empleados, boolean Parqueo, boolean Area_Juegos, int Cantidad_Mesas, int Cantidad_Cajeros, String Nombre_Gerente, String Especialidad_Restaurante, int Estado_Restaurante, int NumeroParqueos, boolean EsPremiun) {
+            this.NombreFranquicia = NombreFranquicia;
             this.Nombre = Nombre;
             this.Ubicacion = Ubicacion;
             this.Cantidad_Empleados = Cantidad_Empleados;
@@ -247,6 +273,14 @@ public class Lab2_DouglasRivera {
             this.Estado_Restaurante = Estado_Restaurante;
             this.NumeroParqueos = NumeroParqueos;
             this.EsPremiun = EsPremiun;
+        }
+
+        public String getNombreFranquicia() {
+            return NombreFranquicia;
+        }
+
+        public void setNombreFranquicia(String NombreFranquicia) {
+            this.NombreFranquicia = NombreFranquicia;
         }
 
         public boolean isEsPremiun() {
